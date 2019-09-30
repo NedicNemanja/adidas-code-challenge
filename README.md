@@ -12,7 +12,7 @@ Please expose port 9000 when running the image (```docker run --name youcontaine
 
 Give the container some time (~10sec) to start all services.
 
-### Create and entry in the database
+### Create an entry in the database
 
 To create an entry in the database you need a POST request to localhost:9000/kafka/writeApi with a request parameter "message" consisting of json data.
 
