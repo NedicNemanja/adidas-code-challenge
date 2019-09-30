@@ -12,6 +12,16 @@ Please expose port 9000 when running the image (```docker run --name youcontaine
 
 Give the container some time (~10sec) to start all services.
 
+In case something goes wrong (which it shouldn't) you can always use ```rm -f youcontainername``` to force container shutdown.
+
+In order to find the ip of your container run:
+
+```
+docker inspect youcontainername
+```
+
+Find the ip under: ```NetworkSettings.IPAddress``` (ie. 172.17.0.2)
+
 ### Create an entry in the database
 
 To create an entry in the database you need a POST request to localhost:9000/kafka/writeApi with a request parameter "message" consisting of json data.
@@ -21,28 +31,18 @@ minimal json data example: {"id":"Bk1250"}
 You can use the following command from your terminal:
 
 ```
-curl --data "message={   \"id\": \"CG7088\",   \"name\": \"Nite Jogger Shoes\",   \"model_number\": \"BTO93\",   \"product_type\": \"inline\",   \"meta_data\": {     \"page_title\": \"adidas Nite Jogger Shoes -Black | adidas UK\",     \"site_name\": \"adidas United Kingdom\",     \"description\": \"Shop for Nite\",     \"keywords\": \"Nite Jogger Shoes\",     \"canonical\": \"//www.adidas.co.uk/nite-jogger-shoes/CG7088.html\"   },   \"pricing_information\": {     \"standard_price\": 119.95,     \"standard_price_no_vat\": 99.96,     \"currentPrice\": 119.95   },   \"product_description\": {     \"title\": \"Nite Jogger Shoes\",     \"subtitle\": \"Modern cushioning updates this flashy '80s standout.\",     \"text\": \"Inspired\"   } }" localhost:9000/kafka/writeApi
+curl --data "message={   \"id\": \"CG7088\",   \"name\": \"Nite Jogger Shoes\",   \"model_number\": \"BTO93\",   \"product_type\": \"inline\",   \"meta_data\": {     \"page_title\": \"adidas Nite Jogger Shoes -Black | adidas UK\",     \"site_name\": \"adidas United Kingdom\",     \"description\": \"Shop for Nite\",     \"keywords\": \"Nite Jogger Shoes\",     \"canonical\": \"//www.adidas.co.uk/nite-jogger-shoes/CG7088.html\"   },   \"pricing_information\": {     \"standard_price\": 119.95,     \"standard_price_no_vat\": 99.96,     \"currentPrice\": 119.95   },   \"product_description\": {     \"title\": \"Nite Jogger Shoes\",     \"subtitle\": \"Modern cushioning updates this flashy '80s standout.\",     \"text\": \"Inspired\"   } }" 172.17.0.2:9000/kafka/writeApi
 ```
 
 ### Query the database
 
 The Spring Boot app provides the ProductApi which returns all the items in the database at ip:9000/kafka/productApi
 
-In order to find the ip of your container run:
-
-```
-docker inspect youcontainername
-```
-
-Find the ip under NetworkSettings.IPAddress.
-
-Once you have the ip (ie. 172.17.0.2) just visit http://172.17.0.2:9000/kafka/productApi from your browser.
- todo add screenshot
+Once you have the container ip (ie. 172.17.0.2) just visit http://172.17.0.2:9000/kafka/productApi from your browser.
  
 ### Query a specific entry in the database by id
 
 In a similar fashion if you visit http://172.17.0.2:9000/kafka/productApi/BK1250, where BK1250 is the id of an existing record. You will get a respone with all the columns of that record.
-todo add screenshot
 
 ### Connect to the container and inspect
 
