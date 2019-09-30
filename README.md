@@ -37,12 +37,10 @@ docker inspect youcontainername
 Find the ip under NetworkSettings.IPAddress.
 
 Once you have the ip (ie. 172.17.0.2) just visit http://172.17.0.2:9000/kafka/productApi from your browser.
- todo add screenshot
  
 ### Query a specific entry in the database by id
 
 In a similar fashion if you visit http://172.17.0.2:9000/kafka/productApi/BK1250, where BK1250 is the id of an existing record. You will get a respone with all the columns of that record.
-todo add screenshot
 
 ### Connect to the container and inspect
 
