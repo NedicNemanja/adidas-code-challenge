@@ -165,7 +165,8 @@ JDBC suitable for low-latency and high-load applications? Nope but it was very s
 
 I used one container for all services. This is not the best practice but is easy for demonstration purposes. In order to make this scalable I suggest one container per service. I managed to run all of them in a single container using a bash script.
 
-I would recommend a CI CD pipeline in a similar fashion. Consisting of different agent-containers each responsible for one service, along with Kubernetes to manage all the environments and Jenkins.
+## CICD proposition
+I would recommend a Jenkins pipeline in a similar fashion. Consisting of different agent-containers each responsible for one service, along with Kubernetes to manage all the environments.
 The pipeline:
 
 Checkout Code - Run Unit Tests - Dockerize App - Push dockerized app to Docker Registry - Use Ansible Playbook to deploy the dockerized app on K8s
