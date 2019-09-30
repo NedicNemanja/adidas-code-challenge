@@ -148,6 +148,15 @@ JsonEnvelope example (here you can see the schema as well):
 So when a message is written by the producer into the topic, the connect-jdbc driver picks it up and tries to use the schema to populate the SQLite database. Note that if no table exists this will create a new table based on the schema, and since there is no name provided it will by default take the topic name "adidas".
 
 Simple right?
-Thats what I thought when I read the confluent documentation about connect-jdbc sink and JsonConverter
+Thats what I thought when I read the confluent documentation about connect-jdbc sink. But as it seems it does NOT support nesting of json fields. I'm pretty sure it can be done, either by message transform, flattening or a different schema.
+Same goes for the insert.mode. Ideally  I would want to have the product.id as the primary key and whenever I get a duplicate the do an update of that record in the database. But honestly after trying many different configuration combinations, docs and tutorials I was running out of time and i decided to bail and revisit when I have time.
+
+## DB -> productApi
+
+SpringBoot connects to SQLite using JDBC. A GET request arrives, then query is performed and results returned.
+
+JDBC suitable for low-latency and high-load applications? Nope but it was very simple to write. If we acutally need super low latency then we can use Speedment in-JVM-memory acceleration. 
+(https://dzone.com/articles/java-shortest-code-and-lowest-latency)
+(https://dzone.com/articles/ultra-low-latency-querying-with-java-streams-and-i)
 
 
