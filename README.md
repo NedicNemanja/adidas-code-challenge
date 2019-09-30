@@ -151,7 +151,7 @@ So when a message is written by the producer into the topic, the connect-jdbc dr
 
 Simple right?
 Thats what I thought when I read the confluent documentation about connect-jdbc sink. But as it seems it does NOT support nesting of json fields. I'm pretty sure it can be done, either by message transform, flattening or a different schema.
-Same goes for the insert.mode. Ideally  I would want to have the product.id as the primary key and whenever I get a duplicate the do an update of that record in the database. But honestly after trying many different configuration combinations, docs and tutorials I was running out of time and i decided to bail and revisit when I have time.
+Same goes for the insert.mode=upsert. Ideally  I would want to have the product.id as the primary key and whenever I get a duplicate the do an update of that record in the database. But honestly after trying many different configuration combinations, docs and tutorials I was running out of time and i decided to bail and revisit when I have time, I need to read more about sink schemas.
 
 ## DB -> productApi
 
@@ -161,4 +161,6 @@ JDBC suitable for low-latency and high-load applications? Nope but it was very s
 (https://dzone.com/articles/java-shortest-code-and-lowest-latency)
 (https://dzone.com/articles/ultra-low-latency-querying-with-java-streams-and-i)
 
+## Docker
 
+I used one container for all services. This is not the best practice but is easy for demonstration purposes. In order to make this scalable I suggest one container per service. I managed to run all of them in a single container using a bash script.
