@@ -46,6 +46,8 @@ todo add screenshot
 
 ### Connect to the container and inspect
 
+If you wish to connect to the container while it running and inspect the database or the services you can use:
+
 ```docker exec -it youcontainername /bin/bash```
 
 # Implementation
