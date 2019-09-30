@@ -1,0 +1,40 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "type": "string",
+      "field": "id",
+      "optional": false
+    },
+    {
+      "type": "string",
+      "field": "name",
+      "optional": true
+    },
+    {
+      "type": "string",
+      "field": "model_number",
+      "optional": true
+    },
+    {
+      "type": "string",
+      "field": "product_type",
+      "optional": true
+    },
+    {
+      "type": "string",
+      "field": "meta_data",
+      "optional": true
+    },
+    {
+      "type": "string",
+      "field": "pricing_information",
+      "optional": true
+    },
+    {
+      "type": "string",
+      "field": "product_description",
+      "optional": true
+    }
+  ]
+}
